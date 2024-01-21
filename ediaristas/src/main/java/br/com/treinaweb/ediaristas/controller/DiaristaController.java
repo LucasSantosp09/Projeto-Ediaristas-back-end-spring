@@ -35,11 +35,17 @@ public class DiaristaController {
         diaristaRepository.save(diaristas);
         return "redirect:/admin/diaristas";
     }
-
     @GetMapping("/{id}/excluir")
     public String excluir(@PathVariable Long id){
         diaristaRepository.deleteById(id);
         return "redirect:/admin/diaristas";
     }
 
+    @GetMapping("/{id}/editar")
+    public ModelAndView editar(@PathVariable Long id){
+        var modelAndView = new ModelAndView("admin/diaristas/form");
+        modelAndView.addObject("diaristas", diaristaRepository.getById(id));
+        return modelAndView;
+
+    }
 }

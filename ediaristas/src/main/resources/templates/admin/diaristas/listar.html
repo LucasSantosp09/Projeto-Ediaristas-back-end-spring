@@ -36,7 +36,10 @@
             <td th:text="${diarista.email}"></td>
             <td th:text="${diarista.estado}"></td>
             <td>
-                <a class="btn btn-sm btn-warning">Editar</a>
+                <a class="btn btn-sm btn-warning"
+                   th:href="@{/admin/diaristas/{id}/editar (id = ${diarista.id} )}">
+                    Editar
+                </a>
                 <a class="btn btn-sm btn-danger" th:href="@{/admin/diaristas/{id}/excluir (id = ${diarista.id} )}"
                    onclick="return confirm('Tem Certeza que deseja excluir esse registro?')">
                     Excluir
