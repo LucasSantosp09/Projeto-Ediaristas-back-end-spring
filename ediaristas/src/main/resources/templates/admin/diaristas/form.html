@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>E-Diaristas</title>
+</head>
+<body>
+    <main>
+        <h1>Cadastro de Diaristas</h1>
+
+            <form method="POST" th:object="${diaristas}">
+
+                <div class="mb-3">
+                    <label class="form-label" for="nomeCompleto">Nome Completo</label>
+                    <input class="form-control" type="text" th:field="*{nomeCompleto}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="cpf">CPF</label>
+                    <input class="form-control" type="text" th:field="*{cpf}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="email">E-mail</label>
+                    <input class="form-control" type="email" th:field="*{email}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="telefone">Telefone</label>
+                    <input class="form-control" type="text" th:field="*{telefone}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="logradouro">Logradouro</label>
+                    <input class="form-control" type="text" th:field="*{logradouro}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="numero">Número</label>
+                    <input class="form-control" type="text" th:field="*{numero}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="bairro">Bairro</label>
+                    <input class="form-control" type="text" th:field="*{bairro}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="complemento">Complemento</label>
+                    <input class="form-control" type="text" th:field="*{complemento}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="cep">CEP</label>
+                    <input class="form-control" type="text" th:field="*{cep}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="estado">Estado</label>
+                    <input class="form-control" type="text" th:field="*{estado}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="cidade">Cidade</label>
+                    <input class="form-control" type="text" th:field="*{cidade}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="codigoIbge">Código IBGE</label>
+                    <input class="form-control" type="text" th:field="*{codigoIbge}">
+                </div>
+
+
+                <button class="btn btn-success" type="submit">Salvar</button>
+            </form>
+
+    </main>
+
+</body>
+</html>

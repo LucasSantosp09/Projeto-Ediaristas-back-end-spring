@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>E-diaristas</title>
+</head>
+<body>
+ <main>
+   <h1>
+     Lista de Diaristas
+   </h1>
+   <table>
+     <thead>
+        <tr>
+          <th>#</th>
+          <th>Nome</th>
+          <th>E-mail</th>
+          <th>Estado</th>
+            <th>Ações</th>
+        </tr>
+     </thead>
+      <tbody>
+        <tr th:each="diarista : ${diaristas}">
+            <td th:text="${diarista.id}"></td>
+            <td th:text="${diarista.nomeCompleto}"></td>
+            <td th:text="${diarista.email}"></td>
+            <td th:text="${diarista.estado}"></td>
+            <td th:text="${diarista.email}"></td>
+            <td>
+                <a href="#">Editar</a>
+                <a href="#">Deletar</a>
+            </td>
+        </tr>
+      </tbody>
+   </table>
+ </main>
+</body>
+</html>

@@ -1,14 +1,27 @@
 package br.com.treinaweb.ediaristas.controller;
 
 import br.com.treinaweb.ediaristas.models.Diaristas;
+import br.com.treinaweb.ediaristas.repository.DiaristaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-@RestController
+@Controller
 @RequestMapping("/admin/diaristas")
 public class DiaristaController {
+    @Autowired
+    private DiaristaRepository diaristaRepository;
+
+    @GetMapping
+    public ModelAndView listar(){
+        var modelAndView = new ModelAndView("admin/diaristas/listar");
+        modelAndView.addObject("diaristas", diaristaRepository.findAll());
+        return modelAndView;
+    }
 
     @GetMapping("/cadastrar")
     public ModelAndView cadastrar(){
@@ -16,4 +29,11 @@ public class DiaristaController {
         modelAndView.addObject("diaristas", new Diaristas());
         return modelAndView;
     }
+
+    @PostMapping("/cadastrar")
+    public String cadastrar(Diaristas diaristas){
+        diaristaRepository.save(diaristas);
+        return "redirect:/admin/diaristas";
+    }
+
 }
