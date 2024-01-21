@@ -46,6 +46,13 @@ public class DiaristaController {
         var modelAndView = new ModelAndView("admin/diaristas/form");
         modelAndView.addObject("diaristas", diaristaRepository.getById(id));
         return modelAndView;
-
     }
+
+    @PostMapping("/{id}/editar")
+    public String editar(@PathVariable Long id, Diaristas diaristas){
+        diaristaRepository.save(diaristas);
+        return "redirect:/admin/diaristas";
+    }
+
+
 }
