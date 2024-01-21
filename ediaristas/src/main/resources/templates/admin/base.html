@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br" th:fragment="template (conteudo)">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>E-Diaristas</title>
+</head>
+<body>
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">E-Diaristas</a>
+    </div>
+</nav>
+
+<main class="container" th:include="${conteudo}"></main>
+
+</body>
+</html>
