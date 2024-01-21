@@ -5,6 +5,7 @@ import br.com.treinaweb.ediaristas.repository.DiaristaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -32,6 +33,12 @@ public class DiaristaController {
     @PostMapping("/cadastrar")
     public String cadastrar(Diaristas diaristas){
         diaristaRepository.save(diaristas);
+        return "redirect:/admin/diaristas";
+    }
+
+    @GetMapping("/{id}/excluir")
+    public String excluir(@PathVariable Long id){
+        diaristaRepository.deleteById(id);
         return "redirect:/admin/diaristas";
     }
 
