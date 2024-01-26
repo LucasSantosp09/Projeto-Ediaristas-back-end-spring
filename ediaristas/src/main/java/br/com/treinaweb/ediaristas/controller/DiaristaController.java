@@ -54,7 +54,10 @@ public class DiaristaController {
     }
 
     @PostMapping("/{id}/editar")
-    public String editar(@PathVariable Long id,@Valid Diaristas diaristas){
+    public String editar(@PathVariable Long id,@Valid Diaristas diaristas, BindingResult result){
+        if (result.hasErrors()){
+            return "admin/diaristas/form";
+        }
         diaristaRepository.save(diaristas);
         return "redirect:/admin/diaristas";
     }
