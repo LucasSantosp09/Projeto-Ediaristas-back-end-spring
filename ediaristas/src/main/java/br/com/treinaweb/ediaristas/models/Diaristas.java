@@ -1,5 +1,8 @@
 package br.com.treinaweb.ediaristas.models;
 
+import br.com.treinaweb.ediaristas.converters.CepConverts;
+import br.com.treinaweb.ediaristas.converters.CpfConverts;
+import br.com.treinaweb.ediaristas.converters.TelefoneConverts;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
@@ -31,6 +34,7 @@ public class Diaristas {
     @Size(min = 11, max = 14)
     @CPF
     @Column(nullable = false, unique = true, length = 11)
+    @Convert(converter = CpfConverts.class)
     private String cpf;
 
     @NotNull
@@ -40,8 +44,9 @@ public class Diaristas {
     private String email;
 
     @NotNull
-    @Size(min = 11, max = 14)
+    @Size(min = 11, max = 15)
     @Column(nullable = false, length = 11)
+    @Convert(converter = TelefoneConverts.class)
     private String telefone;
 
     @NotNull
@@ -65,6 +70,7 @@ public class Diaristas {
     @NotNull
     @Size(min = 8, max = 9)
     @Column(nullable = false, length = 8)
+    @Convert(converter = CepConverts.class)
     private String cep;
 
     @NotNull
@@ -81,5 +87,8 @@ public class Diaristas {
     @NotEmpty
     @Column(nullable = false)
     private String codigoIbge;
+
+    @Column(nullable = false)
+    private String foto;
 
 }
