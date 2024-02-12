@@ -60,10 +60,20 @@ public class DiaristaController {
     }
 
     @PostMapping("/{id}/editar")
-    public String editar(@PathVariable Long id,@Valid Diaristas diaristas, BindingResult result){
+    public String editar(@RequestParam MultipartFile imagem,  @PathVariable Long id,@Valid Diaristas diaristas, BindingResult result) throws IOException {
         if (result.hasErrors()){
             return "admin/diaristas/form";
         }
+
+        var diaristaAtual = diaristaRepository.getById(id);
+
+        if (imagem.isEmpty()){
+            diaristas.setFoto(diaristaAtual.getFoto());
+        }else {
+            var filename = fileService.salvar(imagem);
+            diaristas.setFoto(filename);
+        }
+
         diaristaRepository.save(diaristas);
         return "redirect:/admin/diaristas";
     }
