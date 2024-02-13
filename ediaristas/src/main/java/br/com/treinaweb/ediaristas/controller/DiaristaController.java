@@ -4,10 +4,12 @@ import br.com.treinaweb.ediaristas.models.Diaristas;
 import br.com.treinaweb.ediaristas.repository.DiaristaRepository;
 import br.com.treinaweb.ediaristas.services.FileService;
 import br.com.treinaweb.ediaristas.services.ViaCepService;
+import br.com.treinaweb.ediaristas.validators.CepValidator;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,6 +25,12 @@ public class DiaristaController {
     private FileService fileService;
     @Autowired
     private ViaCepService viaCepService;
+    @InitBinder("diarista")
+    private void initBinder(WebDataBinder binder){
+        binder.addValidators(cepValidator);
+    }
+    @Autowired
+    private CepValidator cepValidator;
 
     @GetMapping
     public ModelAndView listar(){
