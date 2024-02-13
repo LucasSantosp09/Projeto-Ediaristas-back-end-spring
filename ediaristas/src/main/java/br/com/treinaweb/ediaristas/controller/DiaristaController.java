@@ -46,6 +46,12 @@ public class DiaristaController {
         }
         var filename = fileService.salvar(imagem);
         diaristas.setFoto(filename);
+
+        var cep = diaristas.getCep();
+        var endereco = viaCepService.buscarEnderecoPorCep(cep);
+        var codigoIbge = endereco.getIbge();
+        diaristas.setCodigoIbge(codigoIbge);
+
         diaristaRepository.save(diaristas);
         return "redirect:/admin/diaristas";
     }

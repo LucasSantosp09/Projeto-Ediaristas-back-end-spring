@@ -109,14 +109,6 @@
                         <li th:each="erro : ${#fields.errors('cidade')}" th:text="${erro}" ></li>
                     </ul>
                 </div>
-
-                <div class="mb-3">
-                    <label class="form-label" for="codigoIbge">Código IBGE</label>
-                    <input class="form-control" type="text" th:field="*{codigoIbge}">
-                    <ul>
-                        <li th:each="erro : ${#fields.errors('codigoIbge')}" th:text="${erro}" ></li>
-                    </ul>
-                </div>
                 <div class="mb-3">
                     <label class="form-label" for="imagem">Foto</label>
                     <input type="file" class="form-control" id="imagem" name="imagem">
