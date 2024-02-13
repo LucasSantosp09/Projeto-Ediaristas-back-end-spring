@@ -3,6 +3,7 @@ package br.com.treinaweb.ediaristas.controller;
 import br.com.treinaweb.ediaristas.models.Diaristas;
 import br.com.treinaweb.ediaristas.repository.DiaristaRepository;
 import br.com.treinaweb.ediaristas.services.FileService;
+import br.com.treinaweb.ediaristas.services.ViaCepService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,8 @@ public class DiaristaController {
     private DiaristaRepository diaristaRepository;
     @Autowired
     private FileService fileService;
+    @Autowired
+    private ViaCepService viaCepService;
 
     @GetMapping
     public ModelAndView listar(){
