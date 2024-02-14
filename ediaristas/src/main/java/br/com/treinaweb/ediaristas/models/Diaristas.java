@@ -1,5 +1,6 @@
 package br.com.treinaweb.ediaristas.models;
 
+import br.com.treinaweb.ediaristas.controller.FileController;
 import br.com.treinaweb.ediaristas.converters.CepConverts;
 import br.com.treinaweb.ediaristas.converters.CpfConverts;
 import br.com.treinaweb.ediaristas.converters.TelefoneConverts;
@@ -15,6 +16,12 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CPF;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
+
+import java.io.IOException;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @Entity
 @Data
@@ -100,6 +107,12 @@ public class Diaristas {
     private String codigoIbge;
 
     @Column(nullable = false)
+    @JsonIgnore
     private String foto;
+
+    @JsonProperty("foto_usuario")
+    public String getFotoUrl() throws IOException {
+        return linkTo(methodOn(FileController.class).file(foto)).toString();
+    }
 
 }
